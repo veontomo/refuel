@@ -2,7 +2,18 @@
 <resources>
 
     <string name="app_name">Refuel</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="km">Km</string>
+    <string name="kmHint">km run</string>
+    <string name="price">Price</string>
+    <string name="priceHint">fuel price</string>
+    <string name="quantity">Qty</string>
+    <string name="quantityHint">fuel amount</string>
+    <string name="paid">Paid</string>
+    <string name="paidHint">paid amount</string>
+    <string name="fuelStation">Station</string>
+    <string name="fuelStationHint">address</string>
+    <string name="buttonSave">Save</string>
+    <string name="buttonCancel">Cancel</string>
     <string name="action_settings">Settings</string>
 
 </resources>
