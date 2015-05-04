@@ -25,14 +25,19 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080007;
-        public static final int buttonCancel=0x7f080006;
-        public static final int buttonSave=0x7f080005;
-        public static final int fuelStation=0x7f080004;
+        public static final int action_settings=0x7f08000c;
+        public static final int buttonCancel=0x7f08000b;
+        public static final int buttonSave=0x7f08000a;
+        public static final int fuelStation=0x7f080008;
+        public static final int fuelStationInput=0x7f080009;
         public static final int km=0x7f080000;
-        public static final int paid=0x7f080003;
-        public static final int price=0x7f080001;
-        public static final int quantity=0x7f080002;
+        public static final int kmInput=0x7f080001;
+        public static final int paid=0x7f080006;
+        public static final int paidInput=0x7f080007;
+        public static final int price=0x7f080002;
+        public static final int priceInput=0x7f080003;
+        public static final int quantity=0x7f080004;
+        public static final int quantityInput=0x7f080005;
     }
     public static final class layout {
         public static final int activity_refuel_data=0x7f030000;
