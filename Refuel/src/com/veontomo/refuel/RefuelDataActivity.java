@@ -1,4 +1,4 @@
-package com.example.refuel;
+package com.veontomo.refuel;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -31,15 +31,11 @@ public class RefuelDataActivity extends Activity {
 				String fuelStation = getInputAsString(R.id.fuelStationInput);
 				
 				RefuelDataWrapper dataWrapper = new RefuelDataWrapper(km, price, paid, quantity, fuelStation);
-				dataWrapper.validate();
+				Log.i(TAG, "before validate: " + dataWrapper.toString());
+				boolean isValid = dataWrapper.validate();
+				Log.i(TAG, String.valueOf(isValid));
+				Log.i(TAG, "after validate: " + dataWrapper.toString());				
 				dataWrapper.save();
-
-				Log.i(TAG, "data" + String.valueOf(km) + price + paid
-						+ quantity + fuelStation);
-				
-				String addr = ((EditText) findViewById(R.id.fuelStationInput)).getEditableText().toString();
-				Log.i(TAG, addr);
-
 			}
 
 			/**
