@@ -46,6 +46,7 @@ public class RefuelDataActivity extends Activity {
 				if (isValid) {
 					long id = dataWrapper.save();
 					if (id != -1) {
+						cleanModule();
 						Intent intent = new Intent(RefuelDataActivity.this,
 								ShowSingleRefuelDataActivity.class);
 						intent.putExtra("ID", id);
@@ -60,6 +61,23 @@ public class RefuelDataActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				}
 
+			}
+			/**
+			 * Cleans the edit fields from user input.
+			 * 
+			 * Try to make it DRY: Cancel button use the same functionality
+			 * @since 0.1
+			 */
+			private void cleanModule() {
+				int[] inputFields = { R.id.kmInput, R.id.paidInput,
+						R.id.priceInput, R.id.quantityInput,
+						R.id.fuelStationInput };
+				for (int id : inputFields) {
+					EditText inputField = (EditText) findViewById(id);
+					inputField.setText("");
+				}
+
+				
 			}
 
 			/**

@@ -1,7 +1,5 @@
 package com.veontomo.refuel;
 
-import java.util.Map.Entry;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/km"
+            android:id="@+id/kmValue"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/km" />
@@ -24,12 +24,12 @@
             android:id="@+id/kmInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/km"
+            android:layout_alignBaseline="@id/kmValue"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="0dp"
-            android:layout_toEndOf="@id/km"
-            android:layout_toRightOf="@id/km"
+            android:layout_toEndOf="@id/kmValue"
+            android:layout_toRightOf="@id/kmValue"
             android:hint="@string/kmHint"
             android:inputType="phone"
             android:textColor="#7F70D8"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/priceValue"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/price" />
@@ -51,12 +51,12 @@
             android:id="@+id/priceInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/price"
+            android:layout_alignBaseline="@id/priceValue"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="0dp"
-            android:layout_toEndOf="@id/price"
-            android:layout_toRightOf="@id/price"
+            android:layout_toEndOf="@id/priceValue"
+            android:layout_toRightOf="@id/priceValue"
             android:hint="@string/priceHint"
             android:inputType="phone"
             android:textColor="#7F70D8"
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/quantity"
+            android:id="@+id/quantityValue"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/quantity" />
@@ -78,12 +78,12 @@
             android:id="@+id/quantityInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/quantity"
+            android:layout_alignBaseline="@id/quantityValue"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="0dp"
-            android:layout_toEndOf="@id/quantity"
-            android:layout_toRightOf="@id/quantity"
+            android:layout_toEndOf="@id/quantityValue"
+            android:layout_toRightOf="@id/quantityValue"
             android:hint="@string/quantityHint"
             android:inputType="phone"
             android:textColor="#7F70D8"
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/paid"
+            android:id="@+id/paidValue"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/paid" />
@@ -105,12 +105,12 @@
             android:id="@+id/paidInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/paid"
+            android:layout_alignBaseline="@id/paidValue"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="0dp"
-            android:layout_toEndOf="@id/paid"
-            android:layout_toRightOf="@id/paid"
+            android:layout_toEndOf="@id/paidValue"
+            android:layout_toRightOf="@id/paidValue"
             android:hint="@string/paidHint"
             android:inputType="phone"
             android:textColor="#7F70D8"
