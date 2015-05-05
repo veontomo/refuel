@@ -11,10 +11,10 @@ public interface IRefuelDataWrapper {
 	 * Saves the information about single refuel.
 	 * Returns an id by means of which it would be possible to 
 	 * determine whether the saving is successful or not. 
-	 * @return int
+	 * @return long
 	 * @since 0.1
 	 */
-	public int save();
+	public long save();
 	
 	
 	/**

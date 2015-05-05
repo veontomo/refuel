@@ -1,5 +1,7 @@
 package com.veontomo.refuel;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -8,8 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class RefuelDataActivity extends Activity {
 
@@ -29,17 +35,26 @@ public class RefuelDataActivity extends Activity {
 				Float paid = getInputAsFloat(R.id.paidInput);
 				Float quantity = getInputAsFloat(R.id.quantityInput);
 				String fuelStation = getInputAsString(R.id.fuelStationInput);
-				
-				RefuelDataWrapper dataWrapper = new RefuelDataWrapper(km, price, paid, quantity, fuelStation);
+
+				RefuelDataWrapper dataWrapper = new RefuelDataWrapper(km,
+						price, paid, quantity, fuelStation,
+						getApplicationContext());
 				Log.i(TAG, "before validate: " + dataWrapper.toString());
 				boolean isValid = dataWrapper.validate();
-				Log.i(TAG, String.valueOf(isValid));
-				Log.i(TAG, "after validate: " + dataWrapper.toString());				
-				dataWrapper.save();
+				Log.i(TAG, "is input valid? " + String.valueOf(isValid));
+				if (isValid) {
+					dataWrapper.save();
+					// / and start new intent
+				} else {
+					Toast.makeText(getApplicationContext(), "Non valid input",
+							Toast.LENGTH_SHORT).show();
+				}
+
 			}
 
 			/**
-			 * Gets string value of edit text field. 
+			 * Gets string value of edit text field.
+			 * 
 			 * @param int id
 			 * @return String
 			 * @since 0.1
@@ -54,12 +69,13 @@ public class RefuelDataActivity extends Activity {
 					}
 				}
 				Log.i(TAG, "returning " + inputValue);
-				return inputValue; 
+				return inputValue;
 
 			}
 
 			/**
-			 * Gets float value of edit text field. 
+			 * Gets float value of edit text field.
+			 * 
 			 * @param int id
 			 * @return String
 			 * @since 0.1
@@ -77,6 +93,18 @@ public class RefuelDataActivity extends Activity {
 					result = null;
 				}
 				return result;
+			}
+		});
+
+		Button buttonCancel = (Button) findViewById(R.id.buttonCancel);
+		buttonCancel.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				int[] inputFields = {R.id.kmInput, R.id.paidInput, R.id.priceInput, R.id.quantityInput, R.id.fuelStationInput};
+				for (int id : inputFields){
+					EditText inputField = (EditText) findViewById(id);
+					Log.i(TAG, "cleaning composing text of field " + String.valueOf(id));
+					inputField.setText("");
+				}
 			}
 		});
 	}

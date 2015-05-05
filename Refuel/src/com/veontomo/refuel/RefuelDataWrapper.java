@@ -1,5 +1,6 @@
 package com.veontomo.refuel;
 
+import android.content.Context;
 import android.util.Log;
 
 /**
@@ -17,19 +18,21 @@ public class RefuelDataWrapper implements IRefuelDataWrapper {
 	private Float paid;
 	private Float quantity;
 	private String fuelStationAddr;
+	
+	private DBSaver dbSaver;
 
 	public RefuelDataWrapper(Float km, Float price, Float paid, Float quantity,
-			String fuelStationAddr) {
+			String fuelStationAddr, Context context) {
 		this.km = km;
 		this.paid = paid;
 		this.price = price;
 		this.quantity = quantity;
 		this.fuelStationAddr = fuelStationAddr;
+		this.dbSaver = new DBSaver(context);
 	}
 
-	public int save() {
-		/// !!! stub
-		return -1;
+	public long save() {
+		return dbSaver.save(this.km, this.paid, this.price, this.quantity, this.fuelStationAddr);
 	}
 
 	public boolean validate() {
