@@ -40,9 +40,7 @@ public class RefuelDataActivity extends Activity {
 				RefuelDataWrapper dataWrapper = new RefuelDataWrapper(km,
 						price, paid, quantity, fuelStation,
 						getApplicationContext());
-				Log.i(TAG, "before validate: " + dataWrapper.toString());
 				boolean isValid = dataWrapper.validate();
-				Log.i(TAG, "is input valid? " + String.valueOf(isValid));
 				if (isValid) {
 					long id = dataWrapper.save();
 					if (id != -1) {
@@ -61,23 +59,6 @@ public class RefuelDataActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				}
 
-			}
-			/**
-			 * Cleans the edit fields from user input.
-			 * 
-			 * Try to make it DRY: Cancel button use the same functionality
-			 * @since 0.1
-			 */
-			private void cleanModule() {
-				int[] inputFields = { R.id.kmInput, R.id.paidInput,
-						R.id.priceInput, R.id.quantityInput,
-						R.id.fuelStationInput };
-				for (int id : inputFields) {
-					EditText inputField = (EditText) findViewById(id);
-					inputField.setText("");
-				}
-
-				
 			}
 
 			/**
@@ -127,16 +108,7 @@ public class RefuelDataActivity extends Activity {
 		Button buttonCancel = (Button) findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				int[] inputFields = { R.id.kmInput, R.id.paidInput,
-						R.id.priceInput, R.id.quantityInput,
-						R.id.fuelStationInput };
-				for (int id : inputFields) {
-					EditText inputField = (EditText) findViewById(id);
-					Log.i(TAG,
-							"cleaning composing text of field "
-									+ String.valueOf(id));
-					inputField.setText("");
-				}
+				cleanModule();
 			}
 		});
 	}
@@ -159,4 +131,22 @@ public class RefuelDataActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	/**
+	 * Cleans the edit fields from user input.
+	 * 
+	 * @since 0.1
+	 */
+	public void cleanModule() {
+		int[] inputFields = { R.id.kmInput, R.id.paidInput,
+				R.id.priceInput, R.id.quantityInput,
+				R.id.fuelStationInput };
+		for (int id : inputFields) {
+			EditText inputField = (EditText) findViewById(id);
+			inputField.setText("");
+		}
+
+		
+	}
+
 }
