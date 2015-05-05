@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DBSaver extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper {
 
 	private SQLiteDatabase database;
 
@@ -42,7 +42,7 @@ public class DBSaver extends SQLiteOpenHelper {
 			+ " float not null, " + COLUMN_FUELTYPE + " tinyint unsigned, "
 			+ COLUMN_FUELSTATION + " varchar(255)" + ");";
 
-	public DBSaver(Context context) {
+	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		open();
 	}

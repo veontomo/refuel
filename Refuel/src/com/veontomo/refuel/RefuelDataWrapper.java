@@ -19,7 +19,7 @@ public class RefuelDataWrapper implements IRefuelDataWrapper {
 	private Float quantity;
 	private String fuelStationAddr;
 	
-	private DBSaver dbSaver;
+	private DBHelper dbSaver;
 
 	public RefuelDataWrapper(Float km, Float price, Float paid, Float quantity,
 			String fuelStationAddr, Context context) {
@@ -28,7 +28,7 @@ public class RefuelDataWrapper implements IRefuelDataWrapper {
 		this.price = price;
 		this.quantity = quantity;
 		this.fuelStationAddr = fuelStationAddr;
-		this.dbSaver = new DBSaver(context);
+		this.dbSaver = new DBHelper(context);
 	}
 
 	public long save() {
