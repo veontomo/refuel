@@ -3,6 +3,7 @@ package com.veontomo.refuel;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -43,8 +44,17 @@ public class RefuelDataActivity extends Activity {
 				boolean isValid = dataWrapper.validate();
 				Log.i(TAG, "is input valid? " + String.valueOf(isValid));
 				if (isValid) {
-					dataWrapper.save();
-					// / and start new intent
+					long id = dataWrapper.save();
+					if (id != -1) {
+						Intent intent = new Intent(RefuelDataActivity.this,
+								ShowSingleRefuelDataActivity.class);
+						intent.putExtra("ID", id);
+						RefuelDataActivity.this.startActivity(intent);
+					} else {
+						Toast.makeText(getApplicationContext(),
+								"Could not save the data", Toast.LENGTH_SHORT).show();
+
+					}
 				} else {
 					Toast.makeText(getApplicationContext(), "Non valid input",
 							Toast.LENGTH_SHORT).show();
@@ -99,10 +109,14 @@ public class RefuelDataActivity extends Activity {
 		Button buttonCancel = (Button) findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				int[] inputFields = {R.id.kmInput, R.id.paidInput, R.id.priceInput, R.id.quantityInput, R.id.fuelStationInput};
-				for (int id : inputFields){
+				int[] inputFields = { R.id.kmInput, R.id.paidInput,
+						R.id.priceInput, R.id.quantityInput,
+						R.id.fuelStationInput };
+				for (int id : inputFields) {
 					EditText inputField = (EditText) findViewById(id);
-					Log.i(TAG, "cleaning composing text of field " + String.valueOf(id));
+					Log.i(TAG,
+							"cleaning composing text of field "
+									+ String.valueOf(id));
 					inputField.setText("");
 				}
 			}
