@@ -4,6 +4,7 @@ import java.util.Map.Entry;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -35,11 +36,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	private static final String COLUMN_FUELSTATION = "address";
 
+	private static final String[] allColumns = { COLUMN_ID, COLUMN_KM,
+			COLUMN_QUANTITY, COLUMN_PRICE, COLUMN_PAID, COLUMN_FUELTYPE,
+			COLUMN_FUELSTATION };
+
 	private static final String DATABASE_CREATE = "create table " + TABLE_NAME
 			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
-			+ COLUMN_KM + " float, " + COLUMN_QUANTITY + " float not null, "
-			+ COLUMN_PRICE + " float not null, " + COLUMN_PAID
-			+ " float not null, " + COLUMN_FUELTYPE + " tinyint unsigned, "
+			+ COLUMN_KM + " float, " 
+			+ COLUMN_QUANTITY + " float not null, "
+			+ COLUMN_PRICE + " float not null, " 
+			+ COLUMN_PAID + " float not null, " 
+			+ COLUMN_FUELTYPE + " tinyint unsigned, "
 			+ COLUMN_FUELSTATION + " varchar(255)" + ");";
 
 	public DBHelper(Context context) {
@@ -85,5 +92,30 @@ public class DBHelper extends SQLiteOpenHelper {
 		}
 
 		return insertId;
+	}
+
+	public ContentValues getById(long id) {
+		ContentValues result =  new ContentValues();;
+		if (this.database == null) {
+			return null;
+		}
+
+		Cursor cursor = this.database.query(TABLE_NAME, allColumns, COLUMN_ID + " = ?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+
+		if (cursor == null) {
+			return null;
+		}
+		cursor.moveToFirst();
+		result.put(COLUMN_ID, Long.parseLong(cursor.getString(0)));
+		result.put(COLUMN_KM, Float.parseFloat(cursor.getString(1)));
+		result.put(COLUMN_PAID, Float.parseFloat(cursor.getString(4)));
+		result.put(COLUMN_PRICE, Float.parseFloat(cursor.getString(3)));
+		result.put(COLUMN_QUANTITY, Float.parseFloat(cursor.getString(2)));
+		result.put(COLUMN_FUELTYPE, Integer.parseInt(cursor.getString(5)));
+		result.put(COLUMN_FUELSTATION, cursor.getString(6));
+		
+		return result;
+		
 	}
 }

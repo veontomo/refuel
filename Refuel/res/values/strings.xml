@@ -20,5 +20,7 @@
     <string name="imageQuantity">Quantity thumbnail</string>
     <string name="imagePaid">Paid amount thumbnail</string>
     <string name="title_activity_show_single_refuel_data">Single Refuel Data Info</string>
+    <string name="invalidToken">invalid token</string>
+    <string name="noDataAvailable">no data available</string>
 
 </resources>
