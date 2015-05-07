@@ -152,27 +152,33 @@ public class DBHelper extends SQLiteOpenHelper {
 		RefuelDataWrapper singleRecord = null;
 		if (cursor.moveToFirst()) {
 			do {
-				Log.i(TAG,
-						"new line: " + cursor.getString(1)
-								+ cursor.getString(2) + cursor.getString(3)
-								+ cursor.getString(4) + cursor.getString(5)
-								+ cursor.getString(6));
-
-				Float km = 1.0f;//Float.parseFloat(cursor.getString(1));
-				Float quantity = Float.parseFloat(cursor.getString(2));
-				Float price = Float.parseFloat(cursor.getString(3));
-				Float paid = Float.parseFloat(cursor.getString(4));
+				Float km = toFloat(cursor.getString(1));
+				Float quantity = toFloat(cursor.getString(2));
+				Float price = toFloat(cursor.getString(3));
+				Float paid = toFloat(cursor.getString(4));
 				// int fueltype = Integer.parseInt(cursor.getString(5));
 				String fuelStationAddr = cursor.getString(6);
 				singleRecord = new RefuelDataWrapper(km, price, paid, quantity,
 						fuelStationAddr, this.mContext);
 				result.add(singleRecord);
-
 			} while (cursor.moveToNext());
 		} else {
 			Log.i(TAG, "can not go to the first");
 		}
 		return result;
-
+	}
+	
+	/**
+	 * Parses string into float. 
+	 * @param str
+	 * @return
+	 */
+	public Float toFloat(String str){
+		Float result = null;
+		if (str != null){
+			result = Float.parseFloat(str);
+		}
+		return result;
 	}
 }
+
