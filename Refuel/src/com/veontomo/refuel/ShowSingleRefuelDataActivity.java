@@ -69,9 +69,17 @@ public class ShowSingleRefuelDataActivity extends Activity {
 				Intent intent = getIntent();
 				long id = intent.getLongExtra(KEY_ID, -1);
 				if (id != -1){
-					dbHelper.deleteById(id);
+					if (dbHelper.deleteById(id)){
+						Toast.makeText(getApplicationContext(), "deleted id " + String.valueOf(id), Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(getApplicationContext(), "failed to delete id " + String.valueOf(id), Toast.LENGTH_SHORT).show();
+					}
 				}
-				Toast.makeText(getApplicationContext(), "asked to delete id " + String.valueOf(id), Toast.LENGTH_SHORT).show();
+				Intent mInsertDataIntent = new Intent(ShowSingleRefuelDataActivity.this,
+						RefuelDataActivity.class);
+				ShowSingleRefuelDataActivity.this.startActivity(mInsertDataIntent);
+
+				
 			}
 		});
 

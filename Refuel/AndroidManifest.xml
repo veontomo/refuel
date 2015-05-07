@@ -26,6 +26,10 @@
             android:name=".ShowSingleRefuelDataActivity"
             android:label="@string/title_activity_show_single_refuel_data" >
         </activity>
+        <activity
+            android:name=".ShowAllRefuelDataActivity"
+            android:label="@string/title_activity_show_all_refuel_data" >
+        </activity>
     </application>
 
 </manifest>

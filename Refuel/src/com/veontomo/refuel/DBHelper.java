@@ -119,14 +119,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	/**
 	 * Deletes record with given id.
-	 * 
+	 * <br>
+	 * Returns true if exactly one record gets removed. Otherwise - false. 
 	 * @param id
 	 * @since 0.1
 	 */
-	public void deleteById(long id) {
+	public boolean deleteById(long id) {
 		Log.i(TAG, "deleting record with id " + String.valueOf(id));
-		database.delete(TABLE_NAME, COLUMN_ID + " = ?",
+		int affectedRows = database.delete(TABLE_NAME, COLUMN_ID + " = ?",
 				new String[] { String.valueOf(id) });
+		return affectedRows == 1;
 
 	}
 }
