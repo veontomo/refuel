@@ -1,5 +1,7 @@
 package com.veontomo.refuel;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,11 +17,13 @@ public class ShowAllRefuelDataActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_all_refuel_data);
 		
-		RefuelDataWrapper[] data;
+		ArrayList<RefuelDataWrapper> data = new ArrayList<RefuelDataWrapper>();
+		data.add(0, new RefuelDataWrapper(100.1f, 1.0f, 1.0f, 1.0f, "station address", getApplicationContext() ));
 		
 		ListView list = (ListView) findViewById(R.id.allRefuelDataList);
 		
-		
+		RefuelDataWrapperAdapter adapter = new RefuelDataWrapperAdapter(getApplicationContext(), data);
+		list.setAdapter(adapter);
 		
 	}
 

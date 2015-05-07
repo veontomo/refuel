@@ -11,6 +11,76 @@ import android.util.Log;
  */
 public class RefuelDataWrapper implements IRefuelDataWrapper {
 
+	/**
+	 * @return the km
+	 */
+	public Float getKm() {
+		return km;
+	}
+
+	/**
+	 * @param km the km to set
+	 */
+	public void setKm(Float km) {
+		this.km = km;
+	}
+
+	/**
+	 * @return the price
+	 */
+	public Float getPrice() {
+		return price;
+	}
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	/**
+	 * @return the paid
+	 */
+	public Float getPaid() {
+		return paid;
+	}
+
+	/**
+	 * @param paid the paid to set
+	 */
+	public void setPaid(Float paid) {
+		this.paid = paid;
+	}
+
+	/**
+	 * @return the quantity
+	 */
+	public Float getQuantity() {
+		return quantity;
+	}
+
+	/**
+	 * @param quantity the quantity to set
+	 */
+	public void setQuantity(Float quantity) {
+		this.quantity = quantity;
+	}
+
+	/**
+	 * @return the fuelStationAddr
+	 */
+	public String getFuelStationAddr() {
+		return fuelStationAddr;
+	}
+
+	/**
+	 * @param fuelStationAddr the fuelStationAddr to set
+	 */
+	public void setFuelStationAddr(String fuelStationAddr) {
+		this.fuelStationAddr = fuelStationAddr;
+	}
+
 	private static final String TAG = "Refuel";
 	private float precision = 0.01f;
 	private Float km;
@@ -57,5 +127,7 @@ public class RefuelDataWrapper implements IRefuelDataWrapper {
 				+ String.valueOf(price) + ", quantity: "
 				+ String.valueOf(quantity) + ", paid: " + String.valueOf(paid);
 	}
+	
+	
 
 }

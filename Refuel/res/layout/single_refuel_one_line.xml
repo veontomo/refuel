@@ -3,7 +3,24 @@
     android:id="@+id/singleRefuelOneLine"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/oneLineKm"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="AAA" />
+
+    <TextView
+        android:id="@+id/oneLinePrice"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="BBB" />
+
+    <TextView
+        android:id="@+id/oneLinePaid"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="CCC" />
 
 </LinearLayout>
