@@ -98,36 +98,34 @@
         android:layout_toRightOf="@id/imagePaid"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/buttonInsertNew"
-        android:layout_width="80dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@id/paidValue"
-        android:layout_margin="5dp"
-        android:text="@string/buttonInsertNew" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonInsertNew"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/buttonInsertNew" />
 
-    <Button
-        android:id="@+id/buttonShowAll"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/buttonInsertNew"
-        android:layout_below="@id/paidValue"
-        android:layout_margin="5dp"
-        android:layout_toEndOf="@id/buttonInsertNew"
-        android:layout_toRightOf="@id/buttonInsertNew"
-        android:text="@string/buttonShowAll" />
+        <Button
+            android:id="@+id/buttonShowAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/buttonShowAll" />
 
-    <Button
-        android:id="@+id/buttonDelete"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/buttonInsertNew"
-        android:layout_below="@id/paidValue"
-        android:layout_margin="5dp"
-        android:layout_toEndOf="@id/buttonShowAll"
-        android:layout_toRightOf="@id/buttonShowAll"
-        android:text="@string/buttonDelete" />
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/buttonDelete" />
+    </LinearLayout>
 
 </RelativeLayout>
