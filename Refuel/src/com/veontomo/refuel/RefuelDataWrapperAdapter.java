@@ -1,6 +1,7 @@
 package com.veontomo.refuel;
 
 import java.util.ArrayList;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,7 +20,13 @@ public class RefuelDataWrapperAdapter extends BaseAdapter {
 	private static final String TAG = "Refuel";
 	
 	private static final int LAYOUT_TEXT = R.layout.single_refuel_one_line;
-
+	
+	/**
+	 * Maximal number of characters to show in the address
+	 * @since 0.1
+	 */
+	private static final int GEO_ADDR_CUT_OFF = 100;
+	
 	private Context  mContext;
 	
 	private ArrayList<RefuelDataWrapper> data;
@@ -53,22 +60,34 @@ public class RefuelDataWrapperAdapter extends BaseAdapter {
 		if (row == null){
 			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				row = inflater.inflate(LAYOUT_TEXT, parent, false);
-				this.inflateThumbnailLayout(row, this.data.get(position));
-				/// fill in the row with data
-		
+				this.inflateRow(row, this.data.get(position));
 		}
          return row;  
     }
 	
 	
-	private void inflateThumbnailLayout(View row, RefuelDataWrapper data) {
+	private void inflateRow(View row, RefuelDataWrapper data) {
 		TextView kmView = (TextView) row.findViewById(R.id.oneLineKm);
 		kmView.setText(String.valueOf(data.getKm()));
 		TextView priceView = (TextView) row.findViewById(R.id.oneLinePrice);
 		priceView.setText(String.valueOf(data.getPrice()));
 		TextView paidView = (TextView) row.findViewById(R.id.oneLinePaid);
 		paidView.setText(String.valueOf(data.getPaid()));
+		TextView quantityView = (TextView) row.findViewById(R.id.oneLineQuantity);
+		quantityView.setText(String.valueOf(data.getQuantity()));
+		TextView fuelStationView = (TextView) row.findViewById(R.id.oneLineFuelStation);
+		String addr = cutoff(data.getFuelStationAddr(), GEO_ADDR_CUT_OFF);
+		fuelStationView.setText(addr);
+	}
 
-
+	/**
+	 * Returns a string in which all characters (if any) starting from len are cut off. 
+	 * @param str String 
+	 * @param int cut off parameter
+	 * @return String
+	 */
+	private String cutoff(String str, int len) {
+		boolean isTooShort = (str == null || str.length() < len); 
+		return  isTooShort ? str : str.substring(0, len);
 	}
 }

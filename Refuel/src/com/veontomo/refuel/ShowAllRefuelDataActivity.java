@@ -1,30 +1,37 @@
 package com.veontomo.refuel;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 public class ShowAllRefuelDataActivity extends Activity {
 	
-	
+	private DBHelper dbHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_all_refuel_data);
 		
-		ArrayList<RefuelDataWrapper> data = new ArrayList<RefuelDataWrapper>();
-		data.add(0, new RefuelDataWrapper(100.1f, 1.0f, 1.0f, 1.0f, "station address", getApplicationContext() ));
+		this.dbHelper = new DBHelper(getApplicationContext());
 		
+		ArrayList<RefuelDataWrapper> data = this.dbHelper.getAll();
+
 		ListView list = (ListView) findViewById(R.id.allRefuelDataList);
-		
-		RefuelDataWrapperAdapter adapter = new RefuelDataWrapperAdapter(getApplicationContext(), data);
-		list.setAdapter(adapter);
-		
+
+		View header = (View) getLayoutInflater().inflate(
+				R.layout.single_refuel_one_line, null);
+
+		list.addHeaderView(header);
+		RefuelDataWrapperAdapter mAdapter = new RefuelDataWrapperAdapter(
+				getApplicationContext(), data);
+		list.setAdapter(mAdapter);
+		mAdapter.notifyDataSetChanged();
+
 	}
 
 	@Override

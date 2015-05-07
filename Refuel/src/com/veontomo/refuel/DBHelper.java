@@ -1,5 +1,7 @@
 package com.veontomo.refuel;
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,6 +13,8 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper {
 
 	private SQLiteDatabase database;
+
+	private Context mContext;
 
 	private static final String DATABASE_NAME = "Refuel";
 
@@ -47,6 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		this.mContext = context;
 		open();
 	}
 
@@ -118,9 +123,9 @@ public class DBHelper extends SQLiteOpenHelper {
 	}
 
 	/**
-	 * Deletes record with given id.
-	 * <br>
-	 * Returns true if exactly one record gets removed. Otherwise - false. 
+	 * Deletes record with given id. <br>
+	 * Returns true if exactly one record gets removed. Otherwise - false.
+	 * 
 	 * @param id
 	 * @since 0.1
 	 */
@@ -129,6 +134,45 @@ public class DBHelper extends SQLiteOpenHelper {
 		int affectedRows = database.delete(TABLE_NAME, COLUMN_ID + " = ?",
 				new String[] { String.valueOf(id) });
 		return affectedRows == 1;
+
+	}
+
+	/**
+	 * Returns all data stored in the database as array list of
+	 * RefuelDataWrapper.
+	 * 
+	 * @return ArrayList
+	 * @since 0.1
+	 */
+	public ArrayList<RefuelDataWrapper> getAll() {
+		ArrayList<RefuelDataWrapper> result = new ArrayList<RefuelDataWrapper>();
+		Cursor cursor = this.database.query(TABLE_NAME, allColumns, null, null,
+				null, null, null, null);
+		Log.i(TAG, "after query");
+		RefuelDataWrapper singleRecord = null;
+		if (cursor.moveToFirst()) {
+			do {
+				Log.i(TAG,
+						"new line: " + cursor.getString(1)
+								+ cursor.getString(2) + cursor.getString(3)
+								+ cursor.getString(4) + cursor.getString(5)
+								+ cursor.getString(6));
+
+				Float km = 1.0f;//Float.parseFloat(cursor.getString(1));
+				Float quantity = Float.parseFloat(cursor.getString(2));
+				Float price = Float.parseFloat(cursor.getString(3));
+				Float paid = Float.parseFloat(cursor.getString(4));
+				// int fueltype = Integer.parseInt(cursor.getString(5));
+				String fuelStationAddr = cursor.getString(6);
+				singleRecord = new RefuelDataWrapper(km, price, paid, quantity,
+						fuelStationAddr, this.mContext);
+				result.add(singleRecord);
+
+			} while (cursor.moveToNext());
+		} else {
+			Log.i(TAG, "can not go to the first");
+		}
+		return result;
 
 	}
 }
