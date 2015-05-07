@@ -64,7 +64,7 @@ public class ShowSingleRefuelDataActivity extends Activity {
 		Button buttonDelete = (Button) findViewById(R.id.buttonDelete);
 		buttonDelete.setOnClickListener(new OnClickListener() {
 			
-			@Override
+			@Override 
 			public void onClick(View v) {
 				Intent intent = getIntent();
 				long id = intent.getLongExtra(KEY_ID, -1);
