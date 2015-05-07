@@ -40,11 +40,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_CREATE = "create table " + TABLE_NAME
 			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
-			+ COLUMN_KM + " float, " 
-			+ COLUMN_QUANTITY + " float not null, "
-			+ COLUMN_PRICE + " float not null, " 
-			+ COLUMN_PAID + " float not null, " 
-			+ COLUMN_FUELTYPE + " tinyint unsigned, "
+			+ COLUMN_KM + " float, " + COLUMN_QUANTITY + " float not null, "
+			+ COLUMN_PRICE + " float not null, " + COLUMN_PAID
+			+ " float not null, " + COLUMN_FUELTYPE + " tinyint unsigned, "
 			+ COLUMN_FUELSTATION + " varchar(255)" + ");";
 
 	public DBHelper(Context context) {
@@ -93,13 +91,15 @@ public class DBHelper extends SQLiteOpenHelper {
 	}
 
 	public ContentValues getById(long id) {
-		ContentValues result =  new ContentValues();;
+		ContentValues result = new ContentValues();
+		;
 		if (this.database == null) {
 			return null;
 		}
 
-		Cursor cursor = this.database.query(TABLE_NAME, allColumns, COLUMN_ID + " = ?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
+		Cursor cursor = this.database.query(TABLE_NAME, allColumns, COLUMN_ID
+				+ " = ?", new String[] { String.valueOf(id) }, null, null,
+				null, null);
 
 		if (cursor == null) {
 			return null;
@@ -112,9 +112,9 @@ public class DBHelper extends SQLiteOpenHelper {
 		result.put(COLUMN_QUANTITY, Float.parseFloat(cursor.getString(2)));
 		result.put(COLUMN_FUELTYPE, Integer.parseInt(cursor.getString(5)));
 		result.put(COLUMN_FUELSTATION, cursor.getString(6));
-		
+
 		return result;
-		
+
 	}
 
 	/**
@@ -124,8 +124,9 @@ public class DBHelper extends SQLiteOpenHelper {
 	 * @since 0.1
 	 */
 	public void deleteById(long id) {
-		/// !!! stub
 		Log.i(TAG, "deleting record with id " + String.valueOf(id));
-		
+		database.delete(TABLE_NAME, COLUMN_ID + " = ?",
+				new String[] { String.valueOf(id) });
+
 	}
 }
