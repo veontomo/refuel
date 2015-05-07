@@ -100,7 +100,7 @@
 
     <Button
         android:id="@+id/buttonInsertNew"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -110,7 +110,7 @@
 
     <Button
         android:id="@+id/buttonShowAll"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/buttonInsertNew"
         android:layout_below="@id/paidValue"
@@ -121,7 +121,7 @@
 
     <Button
         android:id="@+id/buttonDelete"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/buttonInsertNew"
         android:layout_below="@id/paidValue"
