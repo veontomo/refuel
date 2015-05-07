@@ -1,11 +1,15 @@
 package com.veontomo.refuel;
 
 import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class ShowAllRefuelDataActivity extends Activity {
@@ -31,6 +35,18 @@ public class ShowAllRefuelDataActivity extends Activity {
 				getApplicationContext(), data);
 		list.setAdapter(mAdapter);
 		mAdapter.notifyDataSetChanged();
+		
+		Button buttonInsertNew = (Button) findViewById(R.id.all_buttonInsertNew);
+		buttonInsertNew.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v){
+				Intent intent = new Intent(ShowAllRefuelDataActivity.this,
+						RefuelDataActivity.class);
+				ShowAllRefuelDataActivity.this.startActivity(intent);
+
+			}
+		});
+		
 
 	}
 

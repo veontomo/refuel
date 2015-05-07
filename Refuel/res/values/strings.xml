@@ -25,5 +25,6 @@
     <string name="buttonInsertNew">Insert new</string>
     <string name="buttonDelete">Remove</string>
     <string name="title_activity_show_all_refuel_data">All Refuel Data</string>
+    <string name="buttonShowAll">Show all</string>
 
 </resources>

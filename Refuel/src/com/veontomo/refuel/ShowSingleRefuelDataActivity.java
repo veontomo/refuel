@@ -61,6 +61,19 @@ public class ShowSingleRefuelDataActivity extends Activity {
 			}
 		});
 		
+		Button buttonShowAll = (Button) findViewById(R.id.buttonShowAll);
+		buttonShowAll.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ShowSingleRefuelDataActivity.this,
+						ShowAllRefuelDataActivity.class);
+				ShowSingleRefuelDataActivity.this.startActivity(intent);
+				
+			}
+		});
+
+		
 		Button buttonDelete = (Button) findViewById(R.id.buttonDelete);
 		buttonDelete.setOnClickListener(new OnClickListener() {
 			

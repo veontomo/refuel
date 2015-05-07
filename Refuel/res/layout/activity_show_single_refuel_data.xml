@@ -109,7 +109,7 @@
         android:text="@string/buttonInsertNew" />
 
     <Button
-        android:id="@+id/buttonDelete"
+        android:id="@+id/buttonShowAll"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/buttonInsertNew"
@@ -117,6 +117,17 @@
         android:layout_margin="10dp"
         android:layout_toEndOf="@id/buttonInsertNew"
         android:layout_toRightOf="@id/buttonInsertNew"
+        android:text="@string/buttonShowAll" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/buttonInsertNew"
+        android:layout_below="@id/paidValue"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@id/buttonShowAll"
+        android:layout_toRightOf="@id/buttonShowAll"
         android:text="@string/buttonDelete" />
 
 </RelativeLayout>
