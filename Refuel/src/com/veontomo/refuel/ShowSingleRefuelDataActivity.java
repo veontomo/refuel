@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +44,19 @@ public class ShowSingleRefuelDataActivity extends Activity {
 		}
 		
 		this.fillIn(values);
+		
+		
+		Button buttonInsertNew = (Button) findViewById(R.id.buttonInsertNew);
+		buttonInsertNew.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ShowSingleRefuelDataActivity.this,
+						RefuelDataActivity.class);
+				ShowSingleRefuelDataActivity.this.startActivity(intent);
+				
+			}
+		});
 
 	}
 	/**

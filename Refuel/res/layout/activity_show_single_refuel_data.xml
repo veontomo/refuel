@@ -100,7 +100,7 @@
 
     <Button
         android:id="@+id/buttonInsertNew"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -110,10 +110,8 @@
 
     <Button
         android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignBaseline="@id/buttonInsertNew"
         android:layout_below="@id/paidValue"
         android:layout_margin="10dp"
