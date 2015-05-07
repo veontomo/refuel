@@ -116,4 +116,16 @@ public class DBHelper extends SQLiteOpenHelper {
 		return result;
 		
 	}
+
+	/**
+	 * Deletes record with given id.
+	 * 
+	 * @param id
+	 * @since 0.1
+	 */
+	public void deleteById(long id) {
+		/// !!! stub
+		Log.i(TAG, "deleting record with id " + String.valueOf(id));
+		
+	}
 }

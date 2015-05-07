@@ -16,7 +16,10 @@ import android.widget.Toast;
 public class ShowSingleRefuelDataActivity extends Activity {
 
 	private static final String TAG = "Refuel";
-	DBHelper dbHelper;
+	
+	private static final String KEY_ID = "ID";
+	
+	private DBHelper dbHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,7 @@ public class ShowSingleRefuelDataActivity extends Activity {
 		setContentView(R.layout.activity_show_single_refuel_data);
 		Intent intent = getIntent();
 		Log.i(TAG, "intent is initialized");
-		long id = intent.getLongExtra("ID", -1);
+		long id = intent.getLongExtra(KEY_ID, -1);
 		Log.i(TAG, "id: " + String.valueOf(id));
 		if (id == -1) {
 			Toast.makeText(getApplicationContext(), R.string.invalidToken,
@@ -57,6 +60,21 @@ public class ShowSingleRefuelDataActivity extends Activity {
 				
 			}
 		});
+		
+		Button buttonDelete = (Button) findViewById(R.id.buttonDelete);
+		buttonDelete.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = getIntent();
+				long id = intent.getLongExtra(KEY_ID, -1);
+				if (id != -1){
+					dbHelper.deleteById(id);
+				}
+				Toast.makeText(getApplicationContext(), "asked to delete id " + String.valueOf(id), Toast.LENGTH_SHORT).show();
+			}
+		});
+
 
 	}
 	/**
