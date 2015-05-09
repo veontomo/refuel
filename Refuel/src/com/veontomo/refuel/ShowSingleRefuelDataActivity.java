@@ -101,7 +101,7 @@ public class ShowSingleRefuelDataActivity extends Activity {
 	/**
 	 * Fills in activity's layout with data.
 	 * @since 0.1
-	 * @param values
+	 * @param data
 	 */
 	private void fillIn(ContentValues data) {
 		Log.i(TAG, "inside fillIn");
@@ -117,14 +117,18 @@ public class ShowSingleRefuelDataActivity extends Activity {
 		TextView paidView = (TextView) findViewById(R.id.paidValue);
 		paidView.setText(data.getAsString("paid"));
 
-	}
+        TextView addressView = (TextView) findViewById(R.id.addressValue);
+        addressView.setText(data.getAsString("address"));
 
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.show_single_refuel_data, menu);
-//		return true;
-//	}
+
+    }
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.show_single_refuel_data, menu);
+		return true;
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
