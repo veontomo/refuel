@@ -5,9 +5,19 @@ package com.veontomo.refuel;
  * Created by Andrea on 09/05/2015.
  */
 public class Station {
+    public Station(String name, String address) {
+        this.address = address;
+        this.name = name;
+    }
+
+    public Station(String name) {
+        this.name = name;
+    }
+
     /**
      * Name of the gas station
      * @since 0.1
+
      */
     private String name = null;
 
