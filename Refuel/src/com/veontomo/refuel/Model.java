@@ -13,7 +13,22 @@ public class Model {
      */
     private String name = null;
 
+    /**
+     * Returns id with which the instance has been saved.
+     *
+     * @return id
+     * @since 0.1
+     */
+    public Long getId() {
+        return id;
+    }
 
+    /**
+     * Id of the Model instance.
+     * If is null, then the instance has not been saved yet.
+     * @since 0.1
+     */
+    private Long id = null;
 
     /**
      * name getter
