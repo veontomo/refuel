@@ -6,9 +6,9 @@ package com.veontomo.refuel;
  * Created by Andrea on 10/05/2015.
  * since 0.1
  */
-public class Model {
+public class ActiveRecord {
     /**
-     * Model name. To be used in order create a table in a database.
+     * ActiveRecord name. To be used in order create a table in a database.
      * @since 0.1
      */
     private String name = null;
@@ -24,7 +24,7 @@ public class Model {
     }
 
     /**
-     * Id of the Model instance.
+     * Id of the ActiveRecord instance.
      * If is null, then the instance has not been saved yet.
      * @since 0.1
      */
@@ -46,7 +46,7 @@ public class Model {
      * Initializes name attribute.
      * @since 0.1
      */
-    public Model() {
+    public ActiveRecord() {
         setName();
     }
 
@@ -77,11 +77,11 @@ public class Model {
 
 
     /**
-     * Returns an instance of Model that is saved with given id.
-     * @param id Model's id
-     * @return  instance of Model or null
+     * Returns an instance of ActiveRecord that is saved with given id.
+     * @param id ActiveRecord's id
+     * @return  instance of ActiveRecord or null
      */
-    public static Model findById(long id){
+    public static ActiveRecord findById(long id){
         return null;
     }
 
