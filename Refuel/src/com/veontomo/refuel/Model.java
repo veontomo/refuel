@@ -39,10 +39,9 @@ public class Model {
      * @since 0.1
      */
     private void setName() {
-        String name = "Model";
+        String name = this.getClass().getSimpleName();
         if (name != null){
             this.name = name;
         }
-
     }
 }
