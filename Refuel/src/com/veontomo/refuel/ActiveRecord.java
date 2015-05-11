@@ -1,17 +1,24 @@
 package com.veontomo.refuel;
 
+import org.json.JSONObject;
+
 /**
  * Provides an object-oriented approach for accessing and manipulating
  * data stored in databases.
  * Created by Andrea on 10/05/2015.
  * since 0.1
  */
-public class ActiveRecord {
+abstract public class ActiveRecord {
     /**
-     * ActiveRecord name. To be used in order create a table in a database.
+     * ActiveRecord activeRecordName. To be used in order to create a table in a database.
      * @since 0.1
      */
-    private String name = null;
+    private String activeRecordName = null;
+
+    /**
+     * Instance of a class that is able to save content of the Active Record.
+     */
+    private IStorage dbHelper = null;
 
     /**
      * Returns id with which the instance has been saved.
@@ -31,34 +38,35 @@ public class ActiveRecord {
     private Long id = null;
 
     /**
-     * name getter
+     * activeRecordName getter
      *
-     * @return  value of name
+     * @return  value of activeRecordName
      * @since 0.1
      */
-    public String getName() {
-        return name;
+    public String getActiveRecordName() {
+        return activeRecordName;
     }
 
     /**
      * Constructor.
      *
-     * Initializes name attribute.
+     * Initializes activeRecordName attribute.
      * @since 0.1
      */
     public ActiveRecord() {
-        setName();
+        setActiveRecordName();
     }
 
     /**
-     * Sets the value of name field to be equal to the class's name
+     * Sets the value of activeRecordName field to be equal to the class's activeRecordName
      *
      * @since 0.1
      */
-    private void setName() {
+    private void setActiveRecordName() {
         String name = this.getClass().getSimpleName();
+        System.out.println(name);
         if (name != null){
-            this.name = name;
+            this.activeRecordName = name;
         }
     }
 
@@ -71,9 +79,15 @@ public class ActiveRecord {
      * @since 0.1
      */
     public Long save(){
-        // !!! stub
         return null;
     }
+
+    /**
+     * Returns json object containing information that should be saved.
+     * @return json object
+     * @since 0.1
+     */
+    abstract public JSONObject serialize();
 
 
     /**

@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper implements IStorage{
 
 	private SQLiteDatabase database;
 
@@ -97,7 +97,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	public ContentValues getById(long id) {
 		ContentValues result = new ContentValues();
-		;
+
 		if (this.database == null) {
 			return null;
 		}
@@ -126,7 +126,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	 * Deletes record with given id. <br>
 	 * Returns true if exactly one record gets removed. Otherwise - false.
 	 * 
-	 * @param id
+	 * @param id  id of the record to be found
 	 * @since 0.1
 	 */
 	public boolean deleteById(long id) {
@@ -170,8 +170,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	/**
 	 * Parses string into float. 
-	 * @param str
-	 * @return
+	 * @param str  a string
+	 * @return a float number
 	 */
 	public Float toFloat(String str){
 		Float result = null;

@@ -1,31 +1,37 @@
 package com.veontomo.refuel;
 
+import org.json.JSONObject;
+
 /**
  * Represents information about a car
  * Created by Andrea on 09/05/2015.
  */
-public class Car {
+public class Car extends ActiveRecord {
     /**
      * Car model.
      * Example: BMW 320
+     *
      * @since 0.1
      */
     private String model = null;
 
     /**
      * Car plate
+     *
      * @since 0.1
      */
     private String plate = null;
 
     /**
      * Car's name (how to owner refers to it)
+     *
      * @since 0.1
      */
     private String name = null;
 
     /**
      * Production year
+     *
      * @since 0.1
      */
     private Integer yearProd = null;
@@ -76,6 +82,15 @@ public class Car {
         this.yearProd = yearProd;
     }
 
+    public Long save() {
+        return null;
+    }
 
+    public JSONObject serialize() {
+        return null;
+    }
 
+    public Car() {
+        super();
+    }
 }
