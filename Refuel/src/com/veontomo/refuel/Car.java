@@ -1,5 +1,7 @@
 package com.veontomo.refuel;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,6 +13,7 @@ import java.lang.reflect.Method;
  * Created by Andrea on 09/05/2015.
  */
 public class Car extends ActiveRecord {
+    private static final String TAG = "Car";
     /**
      * Car model.
      * Example: BMW 320
@@ -106,12 +109,12 @@ public class Car extends ActiveRecord {
                     }
 
                 } catch (NoSuchMethodException e) {
-                    // do nothing
+                    Log.d(TAG, "method " + getterName + " is not found.");
                 }
                 catch (InvocationTargetException e){
-                    // do nothing
+                    Log.d(TAG, "Invocation target exception for method " + getterName);
                 } catch (IllegalAccessException e){
-                    // do nothing
+                    Log.d(TAG, "Illegal access exception for method " + getterName);
                 }
             }
         }
