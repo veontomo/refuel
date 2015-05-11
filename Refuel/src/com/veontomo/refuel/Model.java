@@ -13,6 +13,8 @@ public class Model {
      */
     private String name = null;
 
+
+
     /**
      * name getter
      *
@@ -44,4 +46,28 @@ public class Model {
             this.name = name;
         }
     }
+
+    /**
+     * Saves the model.
+     *
+     * In case of success, returns id with which the model is saved. Otherwise, null is returned.
+     *
+     * @return Long id of the model
+     * @since 0.1
+     */
+    public Long save(){
+        // !!! stub
+        return null;
+    }
+
+
+    /**
+     * Returns an instance of Model that is saved with given id.
+     * @param id Model's id
+     * @return  instance of Model or null
+     */
+    public static Model findById(long id){
+        return null;
+    }
+
 }
