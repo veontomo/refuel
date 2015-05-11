@@ -1,5 +1,6 @@
 package com.veontomo.refuel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -87,7 +88,7 @@ abstract public class ActiveRecord {
      * @return json object
      * @since 0.1
      */
-    abstract public JSONObject serialize();
+    abstract public JSONObject serialize() throws JSONException;
 
 
     /**

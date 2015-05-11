@@ -1,6 +1,10 @@
 package com.veontomo.refuel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * Represents information about a car
@@ -86,11 +90,56 @@ public class Car extends ActiveRecord {
         return null;
     }
 
-    public JSONObject serialize() {
-        return null;
+    public JSONObject serialize() throws JSONException{
+        String[] attributes = {"model", "plate", "name", "yearProd", "km"};
+        JSONObject json = new JSONObject();
+        json.put("activeRecordName", this.getActiveRecordName());
+        for (String attr : attributes){
+            String attrCapitalized = capitalize(attr);
+            if (attrCapitalized != null){
+                String getterName = "get" + attrCapitalized;
+                try {
+                    Method method = this.getClass().getDeclaredMethod(getterName, null);
+                    Object value = method.invoke(this);
+                    if (value != null){
+                        json.put(attr, value);
+                    }
+
+                } catch (NoSuchMethodException e) {
+                    // do nothing
+                }
+                catch (InvocationTargetException e){
+                    // do nothing
+                } catch (IllegalAccessException e){
+                    // do nothing
+                }
+            }
+        }
+        return json;
+    }
+
+    /**
+     * Capitalaze the first character of the string.
+     *
+     * Distinguishes between empty strings, single and multi character ones.
+     * @param str
+     * @return  a string with first character capitalized
+     * @since 0.1
+     */
+    private String capitalize(String str){
+        if (str == null || str.equals("")){
+            return str;
+        }
+        if (str.length() == 1){
+            return str.toUpperCase();
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
     public Car() {
         super();
     }
+
+
+
 }

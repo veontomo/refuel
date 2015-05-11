@@ -4,42 +4,54 @@ import com.veontomo.refuel.Car;
 
 import junit.framework.TestCase;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Car's class tests
  * @author veontomo@gmail.com
  * @since 0.1
  */
 public class CarTest extends TestCase {
-    Car model = null;
+    Car car = null;
 
     public void setUp(){
-        this.model = new Car();
+        this.car = new Car();
     }
 
 
 
     public void testKmSetterGetter(){
-        model.setKm(101138);
-        assertEquals((int) model.getKm(), 101138);
+        car.setKm(101138);
+        assertEquals((int) car.getKm(), 101138);
     }
 
     public void testModelSetterGetter(){
-        model.setModel("bmw");
-        assertEquals(model.getModel(), "bmw");
+        car.setModel("bmw");
+        assertEquals(car.getModel(), "bmw");
     }
 
     public void testNameSetterGetter(){
-        model.setName("fast car");
-        assertEquals(model.getName(), "fast car");
+        car.setName("fast car");
+        assertEquals(car.getName(), "fast car");
     }
 
     public void testNameIsNull(){
-        assertNull(model.getName());
+        assertNull(car.getName());
     }
 
 
     public void testNameIsEqualToCar() throws Exception {
-        assertEquals("wrong name attribute of the class Car", model.getActiveRecordName(), "Car");
+        assertEquals("wrong name attribute of the class Car", car.getActiveRecordName(), "Car");
+    }
+
+
+    public void testSerializeModel() throws JSONException{
+        car.setModel("BMW");
+        JSONObject json = car.serialize();
+        String model = (String) json.get("model");
+        assertEquals(model, "BMW");
+
     }
 
 }
