@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
  */
 abstract public class ActiveRecord {
 
+
     private static final String TAG = "ActiveRecord";
 
     /**

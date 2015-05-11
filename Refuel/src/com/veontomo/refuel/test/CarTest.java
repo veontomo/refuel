@@ -46,12 +46,17 @@ public class CarTest extends TestCase {
     }
 
 
-    public void testSerializeModel() throws JSONException{
+    public void testSerializeModelIfExists() throws JSONException{
         car.setModel("BMW");
         JSONObject json = car.serialize();
         String model = (String) json.get("model");
         assertEquals(model, "BMW");
-
     }
+
+    public void testSerializeModelIfNotExists() throws JSONException{
+        JSONObject json = car.serialize();
+        assertFalse("key model must be absent", json.has("model"));
+    }
+
 
 }
