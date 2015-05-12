@@ -1,6 +1,8 @@
 package com.veontomo.refuel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,7 +12,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DBHelper extends SQLiteOpenHelper implements IStorage{
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class DBHelper implements IStorage{
+
+	/**
+	 * Defines table structure.
+	 *
+	 * For example, this field might contains the following information:
+	 * "name": "varchar(5)", "author": "A. Einstein"
+	 * @since 0.1
+	 */
+	private final HashMap<String, String> structure;
 
 	private SQLiteDatabase database;
 
@@ -26,18 +40,8 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 
 	private static final String COLUMN_ID = "_id";
 
-	private static final String COLUMN_KM = "km";
 
-	private static final String COLUMN_QUANTITY = "qty";
-
-	private static final String COLUMN_PRICE = "price";
-
-	private static final String COLUMN_PAID = "paid";
-
-	private static final String COLUMN_FUELTYPE = "fuel_type";
-
-	private static final String COLUMN_FUELSTATION = "address";
-
+/*
 	private static final String[] allColumns = { COLUMN_ID, COLUMN_KM,
 			COLUMN_QUANTITY, COLUMN_PRICE, COLUMN_PAID, COLUMN_FUELTYPE,
 			COLUMN_FUELSTATION };
@@ -48,13 +52,15 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 			+ COLUMN_PRICE + " float not null, " + COLUMN_PAID
 			+ " float not null, " + COLUMN_FUELTYPE + " tinyint unsigned, "
 			+ COLUMN_FUELSTATION + " varchar(255)" + ");";
+*/
 
-	public DBHelper(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		this.mContext = context;
-		open();
+	public DBHelper(HashMap<String, String> structure) {
+		this.structure = structure;
+		//this.parseStructure();
+
 	}
 
+/*
 	public void onCreate(SQLiteDatabase database) {
 		Log.i(TAG, "creating db");
 		database.execSQL(DATABASE_CREATE);
@@ -67,32 +73,13 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 	public void close() {
 		super.close();
 	}
+*/
 
-	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
 				+ newVersion + ", which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-		onCreate(db);
-	}
-
-	public long save(Float km, Float paid, Float price, Float quantity,
-			String fuelStationAddr) {
-		ContentValues values = new ContentValues();
-		long insertId;
-		values.put(COLUMN_KM, km);
-		values.put(COLUMN_PAID, paid);
-		values.put(COLUMN_PRICE, price);
-		values.put(COLUMN_QUANTITY, quantity);
-		values.put(COLUMN_FUELTYPE, 1);
-		values.put(COLUMN_FUELSTATION, fuelStationAddr);
-		insertId = database.insert(TABLE_NAME, null, values);
-		if (insertId == -1) {
-			Log.i(TAG, "problem with saving " + km + ", " + paid + ", " + price
-					+ ", " + quantity + ", " + fuelStationAddr);
-		}
-
-		return insertId;
+//		onCreate(db);
 	}
 
 	public ContentValues getById(long id) {
@@ -101,7 +88,7 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 		if (this.database == null) {
 			return null;
 		}
-
+/*
 		Cursor cursor = this.database.query(TABLE_NAME, allColumns, COLUMN_ID
 				+ " = ?", new String[] { String.valueOf(id) }, null, null,
 				null, null);
@@ -117,6 +104,7 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 		result.put(COLUMN_QUANTITY, Float.parseFloat(cursor.getString(2)));
 		result.put(COLUMN_FUELTYPE, Integer.parseInt(cursor.getString(5)));
 		result.put(COLUMN_FUELSTATION, cursor.getString(6));
+*/
 
 		return result;
 
@@ -146,6 +134,7 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 	 */
 	public ArrayList<RefuelDataWrapper> getAll() {
 		ArrayList<RefuelDataWrapper> result = new ArrayList<RefuelDataWrapper>();
+/*
 		Cursor cursor = this.database.query(TABLE_NAME, allColumns, null, null,
 				null, null, null, null);
 		Log.i(TAG, "after query");
@@ -165,6 +154,7 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 		} else {
 			Log.i(TAG, "can not go to the first");
 		}
+*/
 		return result;
 	}
 	
@@ -182,9 +172,41 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 	}
 
 	@Override
-	public Long save() {
-		/// !!! stub
+	public Long save(String tableName, ContentValues data) {
+		ContentValues values = new ContentValues();
+//		HashMap<String, String> structure = this.getStructure();
+//		long insertId;
+//		Iterator<String> keys = data.keys();
+//		String key;
+//		while(keys.hasNext()){
+//			key = keys.next();
+//
+//			try{
+//				values.put(key, data.get(key));
+//			} catch(JSONException e){
+//				Log.i(TAG, "");
+//			}
+//		}
+//		insertId = database.insert(TABLE_NAME, null, values);
+//		if (insertId == -1) {
+//			Log.i(TAG, "problem with saving in table " + tableName);
+//		}
+
 		return null;
+
+	}
+
+	/**
+	 * structure getter
+	 * @return hash map
+	 * @since 0.1
+	 */
+	public HashMap<String, String> getStructure() {
+		return this.structure;
+	}
+
+	public Boolean update(String target, Long id, ContentValues data){
+		return false;
 	}
 }
 

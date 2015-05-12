@@ -98,11 +98,11 @@ public class Car extends ActiveRecord {
     @Override
     public HashMap<String, String> getStructure(){
         HashMap<String, String> structure = new HashMap<String, String>();
-        structure.put("model", "string:10)");
-        structure.put("plate", "string:10");
-        structure.put("name", "string:10");
+        structure.put("model", "varchar(10)");
+        structure.put("plate", "varchar(10)");
+        structure.put("name", "varchar(10)");
         structure.put("yearProd", "integer");
-        structure.put("km", "float");
+        structure.put("km", "decimal(6,2)");
         return structure;
     }
 

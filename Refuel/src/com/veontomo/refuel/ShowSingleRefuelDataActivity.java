@@ -25,7 +25,7 @@ public class ShowSingleRefuelDataActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.i(TAG, "inside single refuel");
 		super.onCreate(savedInstanceState);
-		this.dbHelper = new DBHelper(getApplicationContext());
+//		this.dbHelper = new DBHelper(getApplicationContext());
 		Log.i(TAG, "dbHelper is initialized");
 		setContentView(R.layout.activity_show_single_refuel_data);
 		Intent intent = getIntent();

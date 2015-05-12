@@ -98,11 +98,12 @@ public class RefuelDataWrapper implements IRefuelDataWrapper {
 		this.price = price;
 		this.quantity = quantity;
 		this.fuelStationAddr = fuelStationAddr;
-		this.dbSaver = new DBHelper(context);
+		//this.dbSaver = new DBHelper(context);
 	}
 
 	public long save() {
-		return dbSaver.save(this.km, this.paid, this.price, this.quantity, this.fuelStationAddr);
+		//return dbSaver.save(this.km, this.paid, this.price, this.quantity, this.fuelStationAddr);
+		return -1;
 	}
 
 	public boolean validate() {

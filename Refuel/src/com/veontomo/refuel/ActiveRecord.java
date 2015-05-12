@@ -1,5 +1,7 @@
 package com.veontomo.refuel;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -68,6 +70,7 @@ abstract public class ActiveRecord {
      */
     public ActiveRecord() {
         setActiveRecordName();
+        this.saver = new DBHelper(this.getStructure());
     }
 
     /**
@@ -86,33 +89,67 @@ abstract public class ActiveRecord {
     /**
      * Saves the model.
      *
+     * If the model contains attribute id, then in fact the instance gets updated.
+     * Otherwise it gets saved.
+     *
      * In case of success, returns id with which the model is saved. Otherwise, null is returned.
      *
      * @return Long id of the model under which it has been saved
      * @since 0.1
      */
     public Long save(){
-        return saver.save();
+        ContentValues data = this.serialize();
+        Long id = this.getId();
+        if (id == null){
+            return saver.save(getActiveRecordName(), data);
+        }
+        Boolean outcome = saver.update(getActiveRecordName(), id, data);
+        if (outcome) {
+            return id;
+        }
+        return null;
     }
 
     /**
-     * Creates a json object whose keys are taken from getSaveAttributes() method.
-     * @return json object
-     * @throws JSONException
+     * Returns true if the instance is a new one, false otherwise.
+     *
+     * An Active Record instance is considered a new one if it has no id (and hence, it has
+     * not been saved yet).
+     * @return whether the instance has already been saved
+     * @since 0.1
      */
-    public JSONObject serialize() throws JSONException{
+    private boolean isNew() {
+        return false;
+    }
+
+    /**
+     * Returns a ContentValues instance with keys taken from getSaveAttributes() method and values
+     * taken from corresponding getter.
+     * @return ContentValues instance
+     */
+    public ContentValues serialize(){
         ArrayList<String> attributes = this.getSaveAttributes();
-        JSONObject json = new JSONObject();
-        json.put("activeRecordName", this.getActiveRecordName());
+        ContentValues contentValues = new ContentValues();
         for (String attr : attributes){
             String attrCapitalized = capitalize(attr);
             if (attrCapitalized != null){
                 String getterName = "get" + attrCapitalized;
                 try {
                     Method method = this.getClass().getDeclaredMethod(getterName, null);
+                    Class returnType = method.getReturnType();
                     Object value = method.invoke(this);
                     if (value != null){
-                        json.put(attr, value);
+                        if (value instanceof Integer){
+                            contentValues.put(attr, (Integer) value);
+                        } else if (value instanceof Float){
+                            contentValues.put(attr, (Float) value);
+                        } else if (value instanceof Double){
+                            contentValues.put(attr, (Double) value);
+                        } else if (value instanceof Character || value instanceof String){
+                            contentValues.put(attr, (String) value);
+                        } else if (value instanceof Boolean){
+                            contentValues.put(attr, (Boolean) value);
+                        }
                     }
                 } catch (NoSuchMethodException e) {
                     Log.d(TAG, "method " + getterName + " is not found.");
@@ -124,7 +161,7 @@ abstract public class ActiveRecord {
                 }
             }
         }
-        return json;
+        return contentValues;
     }
 
     /**

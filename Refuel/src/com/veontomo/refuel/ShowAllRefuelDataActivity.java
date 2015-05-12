@@ -21,7 +21,7 @@ public class ShowAllRefuelDataActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_all_refuel_data);
 		
-		this.dbHelper = new DBHelper(getApplicationContext());
+		// this.dbHelper = new DBHelper(getApplicationContext());
 		
 		ArrayList<RefuelDataWrapper> data = this.dbHelper.getAll();
 

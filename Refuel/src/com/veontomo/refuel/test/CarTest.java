@@ -1,5 +1,6 @@
 package com.veontomo.refuel.test;
 
+import android.content.ContentValues;
 import android.util.Log;
 
 import com.veontomo.refuel.Car;
@@ -52,14 +53,14 @@ public class CarTest extends TestCase {
 
     public void testSerializeModelIfExists() throws JSONException{
         car.setModel("BMW");
-        JSONObject json = car.serialize();
-        String model = (String) json.get("model");
+        ContentValues contentValues = car.serialize();
+        String model = (String) contentValues.get("model");
         assertEquals("BMW", model);
     }
 
     public void testSerializeModelIfNotExists() throws JSONException{
-        JSONObject json = car.serialize();
-        assertFalse("key model must be absent", json.has("model"));
+        ContentValues contentValues = car.serialize();
+        assertFalse("key model must be absent", contentValues.containsKey("model"));
     }
 
 
