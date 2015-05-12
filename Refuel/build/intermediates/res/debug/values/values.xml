@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Andrea/git/refuel/Refuel/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/Andrea/git/refuel/Refuel/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Refuel</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonDelete">Remove</string>
+    <string name="buttonInsertNew">New</string>
+    <string name="buttonSave">Save</string>
+    <string name="buttonShowAll">All</string>
+    <string name="fuelStation">Station</string>
+    <string name="fuelStationHint">address</string>
+    <string name="imageKm">Odograph thumbnail</string>
+    <string name="imagePaid">Paid amount thumbnail</string>
+    <string name="imagePrice">Price thumbnail</string>
+    <string name="imageQuantity">Quantity thumbnail</string>
+    <string name="invalidToken">invalid token</string>
+    <string name="km">Km</string>
+    <string name="kmHint">km run</string>
+    <string name="noDataAvailable">no data available</string>
+    <string name="paid">Paid</string>
+    <string name="paidHint">paid amount</string>
+    <string name="price">Price</string>
+    <string name="priceHint">fuel price</string>
+    <string name="quantity">Qty</string>
+    <string name="quantityHint">fuel amount</string>
+    <string name="title_activity_show_all_refuel_data">All Refuel Data</string>
+    <string name="title_activity_show_single_refuel_data">Single Refuel Data Info</string>
+    <!-- From: file:/C:/Users/Andrea/git/refuel/Refuel/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

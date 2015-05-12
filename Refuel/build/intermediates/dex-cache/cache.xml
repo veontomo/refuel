@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Andrea\git\refuel\Refuel\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="33b27a8d2a5b87e6eb6c60e87a5374ffbfeacc3a">
+        <dex dex="C:\Users\Andrea\git\refuel\Refuel\build\intermediates\pre-dexed\debug\android-support-v4-e01ce79b6fd979381061b44eafb67be0ba5b9d86.jar" />
+    </item>
+    <item
+        jar="C:\Users\Andrea\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Andrea\git\refuel\Refuel\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-4d28153e60903ea8369c7192d8ac5a72d803a4e0.jar" />
+    </item>
+
+</items>

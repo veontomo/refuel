@@ -1,0 +1,175 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refuelDataLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.veontomo.refuel.RefuelDataActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/kmValue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/km" />
+
+        <EditText
+            android:id="@+id/kmInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/kmValue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/kmValue"
+            android:layout_toRightOf="@id/kmValue"
+            android:hint="@string/kmHint"
+            android:inputType="phone"
+            android:textColor="#7F70D8"
+            android:textSize="20sp" >
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/priceValue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/price" />
+
+        <EditText
+            android:id="@+id/priceInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/priceValue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/priceValue"
+            android:layout_toRightOf="@id/priceValue"
+            android:hint="@string/priceHint"
+            android:inputType="phone"
+            android:textColor="#7F70D8"
+            android:textSize="20sp" >
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/quantityValue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity" />
+
+        <EditText
+            android:id="@+id/quantityInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/quantityValue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/quantityValue"
+            android:layout_toRightOf="@id/quantityValue"
+            android:hint="@string/quantityHint"
+            android:inputType="phone"
+            android:textColor="#7F70D8"
+            android:textSize="20sp" >
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/paidValue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/paid" />
+
+        <EditText
+            android:id="@+id/paidInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/paidValue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/paidValue"
+            android:layout_toRightOf="@id/paidValue"
+            android:hint="@string/paidHint"
+            android:inputType="phone"
+            android:textColor="#7F70D8"
+            android:textSize="20sp" >
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/fuelStation"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/fuelStation" />
+
+        <EditText
+            android:id="@+id/fuelStationInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/fuelStation"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/fuelStation"
+            android:layout_gravity="top"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/fuelStation"
+            android:layout_toRightOf="@id/fuelStation"
+            android:gravity="start"
+            android:hint="@string/fuelStationHint"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:maxLines="5"
+            android:textColor="#7F70D8"
+            android:textSize="20sp" >
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/buttonSave" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/buttonSave"
+            android:layout_toEndOf="@id/buttonSave"
+            android:layout_toRightOf="@id/buttonSave"
+            android:text="@string/buttonCancel" />
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/C:/Users/Andrea/git/refuel/Refuel/res/layout/activity_refuel_data.xml -->
