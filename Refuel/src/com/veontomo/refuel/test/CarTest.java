@@ -7,6 +7,8 @@ import junit.framework.TestCase;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Car's class tests
  * @author veontomo@gmail.com
@@ -23,17 +25,17 @@ public class CarTest extends TestCase {
 
     public void testKmSetterGetter(){
         car.setKm(101138);
-        assertEquals((int) car.getKm(), 101138);
+        assertEquals(101138, (int) car.getKm());
     }
 
     public void testModelSetterGetter(){
         car.setModel("bmw");
-        assertEquals(car.getModel(), "bmw");
+        assertEquals( "bmw", car.getModel());
     }
 
     public void testNameSetterGetter(){
         car.setName("fast car");
-        assertEquals(car.getName(), "fast car");
+        assertEquals("fast car", car.getName());
     }
 
     public void testNameIsNull(){
@@ -50,12 +52,23 @@ public class CarTest extends TestCase {
         car.setModel("BMW");
         JSONObject json = car.serialize();
         String model = (String) json.get("model");
-        assertEquals(model, "BMW");
+        assertEquals("BMW", model);
     }
 
     public void testSerializeModelIfNotExists() throws JSONException{
         JSONObject json = car.serialize();
         assertFalse("key model must be absent", json.has("model"));
+    }
+
+
+    public void testGetAllFields(){
+        ArrayList<String> fields = car.getFields();
+        assertEquals(5, fields.size());
+        assertTrue("Field list must contain 'km'", fields.contains("km"));
+        assertTrue("Field list must contain 'plate'", fields.contains("plate"));
+        assertTrue("Field list must contain 'model'", fields.contains("model"));
+        assertTrue("Field list must contain 'yearProd'", fields.contains("yearProd"));
+        assertTrue("Field list must contain 'name'", fields.contains("name"));
     }
 
 

@@ -5,8 +5,10 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 /**
  * Provides an object-oriented approach for accessing and manipulating
@@ -147,6 +149,20 @@ abstract public class ActiveRecord {
             return str.toUpperCase();
         }
         return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    /**
+     * Returns array of field names (private, public or protected)
+     * @return array of strings
+     * @since 0.1
+     */
+    public ArrayList<String> getFields(){
+        ArrayList<String> result = new ArrayList<String>();
+        Field[] fields = this.getClass().getDeclaredFields();
+        for (Field field : fields){
+            result.add(field.getName());
+        }
+        return result;
     }
 
 
