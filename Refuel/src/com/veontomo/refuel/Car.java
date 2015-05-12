@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Represents information about a car
@@ -93,17 +95,16 @@ public class Car extends ActiveRecord {
         return null;
     }
 
-    /**
-     * Array of attribute names that should be saved.
-     * @return array of attributes
-     * @since 0.1
-     */
-    public String[] getSaveAttributes(){
-        return new String[]{"model", "plate", "name", "yearProd", "km"};
+    @Override
+    public HashMap<String, String> getStructure(){
+        HashMap<String, String> structure = new HashMap<String, String>();
+        structure.put("model", "string:10)");
+        structure.put("plate", "string:10");
+        structure.put("name", "string:10");
+        structure.put("yearProd", "integer");
+        structure.put("km", "float");
+        return structure;
     }
-
-
-
 
     public Car() {
         super();

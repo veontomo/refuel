@@ -7,5 +7,7 @@ package com.veontomo.refuel;
  */
 public interface IStorage {
 
+    public Long save();
+
 
 }

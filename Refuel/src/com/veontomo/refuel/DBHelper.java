@@ -180,5 +180,11 @@ public class DBHelper extends SQLiteOpenHelper implements IStorage{
 		}
 		return result;
 	}
+
+	@Override
+	public Long save() {
+		/// !!! stub
+		return null;
+	}
 }
 

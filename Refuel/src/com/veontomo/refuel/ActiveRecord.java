@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Provides an object-oriented approach for accessing and manipulating
@@ -30,7 +31,7 @@ abstract public class ActiveRecord {
     /**
      * Instance of a class that is able to save content of the Active Record.
      */
-    private IStorage dbHelper = null;
+    private IStorage saver = null;
 
     /**
      * Returns id with which the instance has been saved.
@@ -87,19 +88,12 @@ abstract public class ActiveRecord {
      *
      * In case of success, returns id with which the model is saved. Otherwise, null is returned.
      *
-     * @return Long id of the model
+     * @return Long id of the model under which it has been saved
      * @since 0.1
      */
     public Long save(){
-        return null;
+        return saver.save();
     }
-
-    /**
-     * Array of attribute names that should be saved.
-     * @return array of attributes
-     * @since 0.1
-     */
-    abstract public String[] getSaveAttributes();
 
     /**
      * Creates a json object whose keys are taken from getSaveAttributes() method.
@@ -107,7 +101,7 @@ abstract public class ActiveRecord {
      * @throws JSONException
      */
     public JSONObject serialize() throws JSONException{
-        String[] attributes = this.getSaveAttributes();
+        ArrayList<String> attributes = this.getSaveAttributes();
         JSONObject json = new JSONObject();
         json.put("activeRecordName", this.getActiveRecordName());
         for (String attr : attributes){
@@ -156,7 +150,7 @@ abstract public class ActiveRecord {
      * @return array of strings
      * @since 0.1
      */
-    public ArrayList<String> getFields(){
+    public ArrayList<String> getSaveAttributes(){
         ArrayList<String> result = new ArrayList<String>();
         Field[] fields = this.getClass().getDeclaredFields();
         for (Field field : fields){
@@ -175,5 +169,13 @@ abstract public class ActiveRecord {
     public static ActiveRecord findById(long id){
         return null;
     }
+
+    /**
+     * Returns key-value pairs where key is a name of attribute to save and
+     * value is a type of the key.
+     * @return key-value string-valued pairs
+     * @since 0.1
+     */
+    abstract public HashMap<String, String> getStructure();
 
 }

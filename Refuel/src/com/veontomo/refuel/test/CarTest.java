@@ -1,5 +1,7 @@
 package com.veontomo.refuel.test;
 
+import android.util.Log;
+
 import com.veontomo.refuel.Car;
 
 import junit.framework.TestCase;
@@ -62,7 +64,7 @@ public class CarTest extends TestCase {
 
 
     public void testGetAllFields(){
-        ArrayList<String> fields = car.getFields();
+        ArrayList<String> fields = car.getSaveAttributes();
         assertEquals(5, fields.size());
         assertTrue("Field list must contain 'km'", fields.contains("km"));
         assertTrue("Field list must contain 'plate'", fields.contains("plate"));
